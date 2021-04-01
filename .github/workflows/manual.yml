@@ -2,13 +2,16 @@ name: Manually pass
 on:
   workflow_dispatch:
     inputs:
-      name:
-        discription: 'Why'
+      reason:
+        description: 'Why skip'
         required: true
-        default: 'because'
+        default: ''
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Do nothing
+      - name: Echo
+        run: echo "Hello ${{ github.event.inputs.reason }}!"
+      - name: Doing nothing
         run: exit 0
